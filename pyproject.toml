@@ -1,0 +1,73 @@
+[project]
+name = "python-template"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Francisco García",email = "frangarciaencinas@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.14,<4"
+dependencies = [
+    "sphinx-rtd-theme (>=3.0.2,<4.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "helloworld", from = "src"}]
+package-mode = true
+
+[tool.ruff]
+line-length = 80
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "D203",
+    "D212",
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "E501",
+    "D206",
+    "D300",
+    "Q000",
+    "Q001",
+    "Q002",
+    "Q003",
+    "COM812",
+    "COM819",
+    "ISC002",
+]
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*" = ["S101"]
+"**/test_*.py" = ["S101"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+test = [
+    "pytest (>=9.0.1,<10.0.0)",
+    "pytest-cov (>=7.0.0,<8.0.0)"
+]
+lint = [
+    "ruff (>=0.14.5,<0.15.0)",
+    "mypy (>=1.18.2,<2.0.0)"
+]
+docs = [
+    "sphinx (>=8.2.3,<9.0.0)",
+]
