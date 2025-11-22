@@ -51,9 +51,6 @@ jobs:
           pipx ensurepath
           pipx install poetry
           poetry install
-      - name: Lint code
+      - name: Test code
         run: |
-          make lint
-      - name: Type check code
-        run: |
-          make type-check
+          make test
